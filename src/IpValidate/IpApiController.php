@@ -1,6 +1,6 @@
 <?php
 
-namespace Blixter\Controller\IpValidate;
+namespace Blixter\IpValidate;
 
 use Anax\Commons\ContainerInjectableInterface;
 use Anax\Commons\ContainerInjectableTrait;

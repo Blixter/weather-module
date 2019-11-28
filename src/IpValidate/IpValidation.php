@@ -1,8 +1,9 @@
 <?php
-namespace Blixter\Controller\IpValidate;
+namespace Blixter\IpValidate;
 
 use Anax\Commons\ContainerInjectableInterface;
 use Anax\Commons\ContainerInjectableTrait;
+
 /**
  * A sample controller to show how a controller class can be implemented.
  * The controller will be injected with $di if implementing the interface
@@ -23,11 +24,11 @@ class IpValidation implements ContainerInjectableInterface
     public function isIpValid($ipAddress)
     {
         if (filter_var($ipAddress, FILTER_VALIDATE_IP)) {
-          return true;
+            return true;
         }
         return false;
     }
-     /**
+    /**
      * Return if IPv4 or IPv6 protocol
      *
      * @return string
@@ -39,11 +40,11 @@ class IpValidation implements ContainerInjectableInterface
             $protocol = "IPv4";
         }
         if (filter_var($ipAddress, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
-            $protocol =  "IPv6";
+            $protocol = "IPv6";
         }
         return $protocol;
     }
-     /**
+    /**
      * Return domain of ip-address
      *
      * @return string
