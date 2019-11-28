@@ -1,6 +1,6 @@
 <?php
 
-namespace Blixter\Controller\IpGeolocation;
+namespace Blixter\IpGeolocation;
 
 use Anax\Commons\ContainerInjectableInterface;
 use Anax\Commons\ContainerInjectableTrait;
@@ -37,7 +37,9 @@ class IpGeoController implements ContainerInjectableInterface
 
         $title = "Geolokalisera en Ip-adress";
 
-        $ipGeoModel = new IpGeoModel();
+        $curlhandler = $this->di->get("curlhandler");
+        $ipGeoModel = $this->di->get("ipgeo");
+        $ipGeoModel->setCurl($curlhandler);
 
         $request = $this->di->get("request");
         $userIp = $ipGeoModel->getUserIpAddr($request);
@@ -74,7 +76,9 @@ class IpGeoController implements ContainerInjectableInterface
         $title = "Geolokalisering av Ip-adress";
         $ipaddress = $request->getPost("ipaddress");
 
-        $ipGeoModel = new IpGeoModel();
+        $curlhandler = $this->di->get("curlhandler");
+        $ipGeoModel = $this->di->get("ipgeo");
+        $ipGeoModel->setCurl($curlhandler);
 
         $isIpValid = $ipValidation->isIpValid($ipaddress);
 

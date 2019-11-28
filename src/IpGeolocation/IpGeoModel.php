@@ -1,8 +1,6 @@
 <?php
 
-namespace Blixter\Controller\IpGeolocation;
-
-use Blixter\Controller\Utilities;
+namespace Blixter\IpGeolocation;
 
 /**
  *
@@ -27,10 +25,28 @@ class IpGeoModel
      */
     public function __construct()
     {
-        // Get the file where they key is stored
-        $keys = require ANAX_INSTALL_PATH . "/config/keys.php";
-        $this->apiKey = $keys["ipStackApiKey"];
-        $this->curlhandler = new Utilities\CurlModel();
+    }
+
+    /**
+     *
+     * Set the curlhandler
+     *
+     * @return void
+     */
+    public function setCurl($ch)
+    {
+        $this->curlhandler = $ch;
+    }
+
+    /**
+     *
+     * Set the ApiKey
+     *
+     * @return void
+     */
+    public function setApi($key)
+    {
+        $this->apiKey = $key;
     }
 
     /**
