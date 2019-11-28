@@ -1,5 +1,5 @@
 <?php
-namespace Blixter\Controller\Utilities;
+namespace Blixter\Utilities;
 
 /**
  *
@@ -36,7 +36,6 @@ class CurlModel
             // Decode to JSON
             $response = json_decode($response, true);
         }
-
 
         return $response;
     }
