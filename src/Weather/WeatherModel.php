@@ -1,7 +1,6 @@
 <?php
-namespace Blixter\Controller\Weather;
+namespace Blixter\Weather;
 
-use Blixter\Controller\Utilities;
 use DateInterval;
 use DateTime;
 
@@ -19,6 +18,7 @@ class WeatherModel
      */
     protected $apiKey;
     protected $curlhandler;
+    protected $darkSkyUrl;
 
     /**
      *
@@ -29,10 +29,40 @@ class WeatherModel
     public function __construct()
     {
         // Get the file where they key is stored
-        $keys = require ANAX_INSTALL_PATH . "/config/keys.php";
-        $this->apiKey = $keys["darkSkyApiKey"];
         $this->darkSkyUrl = "https://api.darksky.net/forecast";
-        $this->curlhandler = new Utilities\CurlModel();
+    }
+
+    /**
+     *
+     * Set the curlhandler
+     *
+     * @return void
+     */
+    public function setCurl($ch)
+    {
+        $this->curlhandler = $ch;
+    }
+
+    /**
+     *
+     * Set the darkSkyUrl
+     *
+     * @return void
+     */
+    public function setUrl($url)
+    {
+        $this->darkSkyUrl = $url;
+    }
+
+    /**
+     *
+     * Set the ApiKey
+     *
+     * @return void
+     */
+    public function setApi($key)
+    {
+        $this->apiKey = $key;
     }
 
     /**
