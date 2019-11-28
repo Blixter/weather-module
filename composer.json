@@ -1,0 +1,34 @@
+{
+    "name": "blixter/weather",
+    "type": "library",
+    "description": "A weather module used for the Anax framework",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Robin Blixter",
+            "email": "r.blixte89@gmail.com",
+            "homepage": "https://blixter.me",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/blixter/weather-module/issues"
+    },
+    "minimum-stability": "beta",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "Anax\\": "src/",
+            "Blixter\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">=7.2",
+        "anax/commons": "^2.0.0@beta"
+    },
+    "require-dev": {
+        "phpmetrics/phpmetrics": "^2",
+        "phpunit/phpunit": "^7",
+        "anax/anax-lite": "^1.0.24"
+    }
+}
