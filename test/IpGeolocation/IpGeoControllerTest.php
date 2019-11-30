@@ -1,6 +1,6 @@
 <?php
 
-namespace Blixter\Controller\IpGeolocation;
+namespace Blixter\IpGeolocation;
 
 use Anax\DI\DIFactoryConfig;
 use PHPUnit\Framework\TestCase;
@@ -19,12 +19,14 @@ class IpGeoControllerTest extends TestCase
         // Setup di
         $this->di = new DIFactoryConfig();
         $this->di->loadServices(ANAX_INSTALL_PATH . "/config/di");
+        $this->di->loadServices(ANAX_INSTALL_PATH . "/test/config/di");
 
         // View helpers uses the global $di so it needs its value
         $di = $this->di;
 
-        // Use a different cache dir for unit test
-        $di->get("cache")->setPath(ANAX_INSTALL_PATH . "/test/cache");
+        // Get the model from di and set the url for the mock api.
+        $ipgeo = $di->get("ipgeo");
+        $ipgeo->setUrl("http://localhost/WeatherModule/a/htdocs/mock/ip?");
 
         // Setup the controller
         $this->controller = new IpGeoController();
@@ -47,7 +49,7 @@ class IpGeoControllerTest extends TestCase
         $this->assertInstanceOf("\Anax\Response\Response", $res);
 
         $body = $res->getBody();
-        $exp = "Geolokalisera en Ip-adress | ramverk1</title>";
+        $exp = "Geolokalisera en Ip-adress";
         $this->assertContains($exp, $body);
     }
 
@@ -84,7 +86,7 @@ class IpGeoControllerTest extends TestCase
     {
         $request = $this->di->get("request");
         // Valid IPv6
-        $request->setPost("ipaddress", "2001:4860:4860::8888");
+        $request->setPost("ipaddress", "8.8.8.8");
 
         $res = $this->controller->indexActionPost();
 
@@ -96,7 +98,7 @@ class IpGeoControllerTest extends TestCase
         $this->assertContains($exp, $body);
         $exp = "mapid";
         $this->assertContains($exp, $body);
-        $exp = "IPv6";
+        $exp = "IPv4";
         $this->assertContains($exp, $body);
         $exp = "United States";
         $this->assertContains($exp, $body);
@@ -117,10 +119,8 @@ class IpGeoControllerTest extends TestCase
         $this->assertInstanceOf("\Anax\Response\Response", $res);
 
         $body = $res->getBody();
-        $exp = "| ramverk1</title>";
-        $exp2 = "Inte godkänd";
+        $exp = "Inte godkänd";
         $this->assertContains($exp, $body);
-        $this->assertContains($exp2, $body);
         $exp = "mapid";
         $this->assertNotContains($exp, $body);
     }

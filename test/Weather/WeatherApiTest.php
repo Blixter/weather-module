@@ -1,6 +1,6 @@
 <?php
 
-namespace Blixter\Controller\Weather;
+namespace Blixter\Weather;
 
 use Anax\DI\DIFactoryConfig;
 use PHPUnit\Framework\TestCase;
@@ -16,17 +16,16 @@ class WeatherApiTest extends TestCase
     protected function setUp()
     {
         global $di;
-        // Setup di
+        // Set di as global variable
         $this->di = new DIFactoryConfig();
-        $this->di->loadServices(ANAX_INSTALL_PATH . "/config/di");
-
-        // View helpers uses the global $di so it needs its value
         $di = $this->di;
+        $di->loadServices(ANAX_INSTALL_PATH . "/config/di");
+        $di->loadServices(ANAX_INSTALL_PATH . "/test/config/di");
 
-        // Use a different cache dir for unit test
-        $di->get("cache")->setPath(ANAX_INSTALL_PATH . "/test/cache");
+        // Get the model from di and set the url for the mock api.
+        $this->weather = $di->get("weather");
 
-        // Setup the controller
+        // Setup controllerclass
         $this->controller = new WeatherApi();
         $this->controller->setDI($this->di);
     }
@@ -36,8 +35,12 @@ class WeatherApiTest extends TestCase
      */
     public function testIndexActionGetValid()
     {
+
         $request = $this->di->get("request");
+        $url = $this->di->get("url");
         $request->setGet("location", "8.8.8.8");
+
+        $this->weather->setUrl("http://localhost/WeatherModule/a/htdocs/mock?");
 
         $res = $this->controller->indexActionGet();
         $this->assertIsArray($res);
@@ -51,25 +54,15 @@ class WeatherApiTest extends TestCase
     public function testIndexActionGetPast()
     {
         $request = $this->di->get("request");
+
+        $this->weather->setUrl("http://localhost/WeatherModule/a/htdocs/mock/past?");
+
         $request->setGet("location", "8.8.8.8");
         $request->setGet("period", "past");
 
         $res = $this->controller->indexActionGet();
         $this->assertIsArray($res);
 
-        $this->assertArrayHasKey("weatherData", $res[0]);
-    }
-
-    /**
-     * Test the route "index".
-     */
-    public function testIndexActionGetInvalid()
-    {
-        $request = $this->di->get("request");
-        $request->setGet("location", "999.999.999.999");
-
-        $res = $this->controller->indexActionGet();
-        $this->assertIsArray($res);
         $this->assertArrayHasKey("weatherData", $res[0]);
     }
 }

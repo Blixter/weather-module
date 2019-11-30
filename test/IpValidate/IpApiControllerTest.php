@@ -1,6 +1,6 @@
 <?php
 
-namespace Blixter\Controller\IpValidate;
+namespace Blixter\IpValidate;
 
 use Anax\DI\DIFactoryConfig;
 use PHPUnit\Framework\TestCase;
@@ -16,13 +16,16 @@ class IpApiControllerTest extends TestCase
     public function testIndexActionGet()
     {
         global $di;
-        
+        $this->di = new DIFactoryConfig();
+        $di = $this->di;
+
         // Setup di
         $di = new DIFactoryConfig();
         $di->loadServices(ANAX_INSTALL_PATH . "/config/di");
+        $di->loadServices(ANAX_INSTALL_PATH . "/test/config/di");
 
         // Use a different cache dir for unit test
-        $di->get("cache")->setPath(ANAX_INSTALL_PATH . "/test/cache");
+        // $di->get("cache")->setPath(ANAX_INSTALL_PATH . "/test/cache");
         $request = $di->get("request");
 
         // Setup the controller

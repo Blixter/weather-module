@@ -1,6 +1,6 @@
 <?php
 
-namespace Blixter\Controller\Weather;
+namespace Blixter\Weather;
 
 use Anax\DI\DIFactoryConfig;
 use PHPUnit\Framework\TestCase;
@@ -16,17 +16,16 @@ class WeatherControllerTest extends TestCase
     protected function setUp()
     {
         global $di;
-        // Setup di
+        // Set di as global variable
         $this->di = new DIFactoryConfig();
-        $this->di->loadServices(ANAX_INSTALL_PATH . "/config/di");
-
-        // View helpers uses the global $di so it needs its value
         $di = $this->di;
+        $di->loadServices(ANAX_INSTALL_PATH . "/config/di");
+        $di->loadServices(ANAX_INSTALL_PATH . "/test/config/di");
 
-        // Use a different cache dir for unit test
-        $di->get("cache")->setPath(ANAX_INSTALL_PATH . "/test/cache");
+        // Get the model from di and set the url for the mock api.
+        $this->weather = $di->get("weather");
 
-        // Setup the controller
+        // Setup controllerclass
         $this->controller = new WeatherController();
         $this->controller->setDI($this->di);
     }
@@ -39,6 +38,8 @@ class WeatherControllerTest extends TestCase
         $request = $this->di->get("request");
 
         $request->setGet("title", "Väder");
+
+        $this->weather->setUrl("http://localhost/WeatherModule/a/htdocs/mock");
 
         $res = $this->controller->indexActionGet();
 
@@ -58,6 +59,8 @@ class WeatherControllerTest extends TestCase
         $request = $this->di->get("request");
         // Valid IPv6
         $request->setPost("location", "2001:4860:4860::8888");
+
+        $this->weather->setUrl("http://localhost/WeatherModule/a/htdocs/mock");
 
         $res = $this->controller->indexActionPost();
 
@@ -81,6 +84,8 @@ class WeatherControllerTest extends TestCase
         // Upcoming weather prognos
         $request->setPost("radiochoice", "upcoming");
 
+        $this->weather->setUrl("http://localhost/WeatherModule/a/htdocs/mock?");
+
         $res = $this->controller->indexActionPost();
 
         $this->assertIsObject($res);
@@ -103,6 +108,8 @@ class WeatherControllerTest extends TestCase
         // Weather prognos for past month
         $request->setPost("radiochoice", "past");
 
+        $this->weather->setUrl("http://localhost/WeatherModule/a/htdocs/mock?");
+
         $res = $this->controller->indexActionPost();
 
         $this->assertIsObject($res);
@@ -124,15 +131,15 @@ class WeatherControllerTest extends TestCase
 
         $res = $this->controller->indexActionPost();
 
+        $this->weather->setUrl("http://localhost/WeatherModule/a/htdocs/mock?");
+
         $this->assertIsObject($res);
         $this->assertInstanceOf("\Anax\Response\Response", $res);
 
         $body = $res->getBody();
-        $exp = "| ramverk1</title>";
         // Message for invalid location
-        $exp2 = "Ip-adressen eller platsen är inte giltlig";
+        $exp = "Ip-adressen eller platsen är inte giltlig";
         $this->assertContains($exp, $body);
-        $this->assertContains($exp2, $body);
         // div with id=mapid should not exist
         $exp = "mapid";
         $this->assertNotContains($exp, $body);
