@@ -6,7 +6,6 @@ return [
     // Services to add to the container.
     "services" => [
         "weather" => [
-            "active" => false,
             "shared" => true,
             "callback" => function () {
                 $weather = new \Blixter\Weather\WeatherModel();

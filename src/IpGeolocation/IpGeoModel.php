@@ -11,20 +11,24 @@ class IpGeoModel
     /**
      *
      *  @var string @apiKey Init the procted API key
+     *  @var object @curlhandler Init the object
+     *  @var string @url Init the url
      *
      */
-    protected $apiKey;
     protected $curlhandler;
+    protected $apiKey;
+    protected $url;
 
     /**
      *
      * Get and Set the API key
      *
-     *
      * @return void
      */
     public function __construct()
     {
+        // Get the file where they key is stored
+        $this->url = "http://api.ipstack.com/";
     }
 
     /**
@@ -33,9 +37,20 @@ class IpGeoModel
      *
      * @return void
      */
-    public function setCurl($ch)
+    public function setCurl(object $ch)
     {
         $this->curlhandler = $ch;
+    }
+
+    /**
+     *
+     * Set the curlhandler
+     *
+     * @return void
+     */
+    public function setUrl(string $url)
+    {
+        $this->url = $url;
     }
 
     /**
@@ -58,7 +73,7 @@ class IpGeoModel
     {
         $json = true;
 
-        $url = 'http://api.ipstack.com/' . $ipAddress . '?access_key=' . $this->apiKey;
+        $url = $this->url . $ipAddress . '?access_key=' . $this->apiKey;
 
         $jsonResponse = $this->curlhandler->curl($url, $json);
 

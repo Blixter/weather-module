@@ -72,7 +72,6 @@ class WeatherModel
      */
     public function fetchData($coordinates)
     {
-
         $lat = $coordinates["lat"];
         $lon = $coordinates["lon"];
 
@@ -85,7 +84,7 @@ class WeatherModel
         $jsonResponse = $this->curlhandler->curl($url, $json);
 
         $weatherData = [];
-        foreach ($jsonResponse["daily"]["data"] as $weather) {
+        foreach ((array) $jsonResponse["daily"]["data"] as $weather) {
             array_push($weatherData, [
                 "date" => gmdate("y-m-d", $weather["time"]),
                 "summary" => $weather["summary"],
@@ -135,7 +134,7 @@ class WeatherModel
 
         $weatherData = [];
         foreach ($jsonResponse as $weatherDay) {
-            foreach ($weatherDay["daily"]["data"] as $weather) {
+            foreach ((array) $weatherDay["daily"]["data"] as $weather) {
                 array_push($weatherData, [
                     "date" => gmdate("y-m-d", $weather["time"]),
                     "summary" => $weather["summary"],

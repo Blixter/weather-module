@@ -30,6 +30,11 @@
     "require-dev": {
         "phpmetrics/phpmetrics": "^2",
         "phpunit/phpunit": "^7",
-        "anax/anax-lite": "^1.0.24"
+        "anax/anax-lite": "^1.0.24",
+        "anax/cache": "^2.0.0-beta.5",
+        "anax/request": "^2.0.2",
+        "anax/page": "^2.0.0-beta.1",
+        "anax/view": "^2.0.2",
+        "anax/url": "^2.0.0-alpha.1"
     }
 }

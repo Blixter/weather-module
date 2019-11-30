@@ -4,7 +4,6 @@ namespace Blixter\Weather;
 
 use Anax\Commons\ContainerInjectableInterface;
 use Anax\Commons\ContainerInjectableTrait;
-use Blixter\IpGeolocation;
 
 // use Anax\Route\Exception\ForbiddenException;
 // use Anax\Route\Exception\NotFoundException;
@@ -67,10 +66,11 @@ class WeatherController implements ContainerInjectableInterface
         // Using ipValidation class from $di.
         $ipValidation = $this->di->get("ipvalidation");
         $isIpValid = $ipValidation->isIpValid($location);
-        $ipGeoModel = new IpGeolocation\IpGeoModel();
+        $ipGeoModel = $this->di->get("ipgeo");
         $curlhandler = $this->di->get("curlhandler");
         $weatherModel = $this->di->get("weather");
         $weatherModel->setCurl($curlhandler);
+        $ipGeoModel->setCurl($curlhandler);
         $isLocationValid = $weatherModel->getCoordinates($location);
         $coords = null;
 
