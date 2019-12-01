@@ -22,7 +22,7 @@ composer require blixter/weather-module
 The module supports a postprocessing installation script, to be used with Anax scaffolding. The script executes the default installation.
 
 ```
-bash vendor/blixter/weather-module/.anax/scaffold/postprocess.d/400_weather.bash
+bash vendor/blixter/weather/.anax/scaffold/postprocess.d/400_weather.bash
 ```
 
 Run this script after `composer require` is done or use the commands below for step by step installation.
