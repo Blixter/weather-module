@@ -1,3 +1,7 @@
+## v1.0.1 (2019-12-01)
+
+-   Updated the tests to use cache in test/cache.
+
 ## v1.0.0 (2019-12-01)
 
 -   Added all my models to di.
