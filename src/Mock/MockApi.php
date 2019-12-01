@@ -32,7 +32,7 @@ class MockApi implements ContainerInjectableInterface
      */
     public function indexActionGet(): array
     {
-        $weatherMock = new \Blixter\Mock\WeatherMock();
+        $weatherMock = new WeatherMock();
 
         $res = $weatherMock->getWeatherUpcoming();
 
@@ -48,7 +48,7 @@ class MockApi implements ContainerInjectableInterface
      */
     public function pastActionGet(): array
     {
-        $weatherMock = new \Blixter\Mock\WeatherMock();
+        $weatherMock = new WeatherMock();
 
         $res = $weatherMock->getWeatherPast();
 
@@ -64,7 +64,7 @@ class MockApi implements ContainerInjectableInterface
      */
     public function ipActionGet(): array
     {
-        $ipMock = new \Blixter\Mock\IpMock();
+        $ipMock = new IpMock();
 
         $res = $ipMock->getIpInfo();
 

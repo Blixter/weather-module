@@ -1,6 +1,10 @@
+## v1.0.3 (2019-12-01)
+
+-   Fixed validation errors.
+
 ## v1.0.2 (2019-12-01)
 
--   Changed mock API url to use online instead of local.
+-   Changed mock API url to use online version instead of local.
 
 ## v1.0.1 (2019-12-01)
 

@@ -38,7 +38,6 @@ class WeatherApiTest extends TestCase
     {
 
         $request = $this->di->get("request");
-        $url = $this->di->get("url");
         $request->setGet("location", "8.8.8.8");
 
         $this->weather->setUrl("http://www.student.bth.se/~rony18/dbwebb-kurser/ramverk1/me/redovisa/htdocs/mock?");

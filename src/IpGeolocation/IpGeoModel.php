@@ -5,6 +5,7 @@ namespace Blixter\IpGeolocation;
 /**
  *
  * Model for IpGeoController
+ * @SuppressWarnings(PHPMD.ShortVariable)
  */
 class IpGeoModel
 {

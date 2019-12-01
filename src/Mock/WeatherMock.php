@@ -6,7 +6,7 @@ class WeatherMock
     /**
      * Function that takes an coordinate and gets upcomming weather.
      *
-     *
+     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
      * @return array $result
      */
     public function getWeatherUpcoming(): array

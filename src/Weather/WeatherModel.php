@@ -7,6 +7,7 @@ use DateTime;
 /**
  *
  * Model for WeatherController
+ * @SuppressWarnings(PHPMD.ShortVariable)
  */
 class WeatherModel
 {
