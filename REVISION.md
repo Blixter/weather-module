@@ -1,3 +1,7 @@
+## v1.0.2 (2019-12-01)
+
+-   Changed mock API url to use online instead of local.
+
 ## v1.0.1 (2019-12-01)
 
 -   Updated the tests to use cache in test/cache.
