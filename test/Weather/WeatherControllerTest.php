@@ -18,9 +18,11 @@ class WeatherControllerTest extends TestCase
         global $di;
         // Set di as global variable
         $this->di = new DIFactoryConfig();
+        $this->di->loadServices(ANAX_INSTALL_PATH . "/config/di");
+        $this->di->loadServices(ANAX_INSTALL_PATH . "/test/config/di");
         $di = $this->di;
-        $di->loadServices(ANAX_INSTALL_PATH . "/config/di");
-        $di->loadServices(ANAX_INSTALL_PATH . "/test/config/di");
+        // Use a different cache dir for unit test
+        $this->di->get("cache")->setPath(ANAX_INSTALL_PATH . "/test/cache");
 
         // Get the model from di and set the url for the mock api.
         $this->weather = $di->get("weather");

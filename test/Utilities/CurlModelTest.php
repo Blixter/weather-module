@@ -25,7 +25,7 @@ class CurlModelTest extends TestCase
         $di = $this->di;
 
         // Use a different cache dir for unit test
-        // $di->get("cache")->setPath(ANAX_INSTALL_PATH . "/test/cache");
+        $this->di->get("cache")->setPath(ANAX_INSTALL_PATH . "/test/cache");
 
         // Setup the class
         $this->class = new CurlModel();

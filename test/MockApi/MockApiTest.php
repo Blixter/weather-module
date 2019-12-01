@@ -22,6 +22,9 @@ class MockApiTest extends TestCase
         $di->loadServices(ANAX_INSTALL_PATH . "/config/di");
         $di->loadServices(ANAX_INSTALL_PATH . "/test/config/di");
 
+        // Use a different cache dir for unit test
+        $this->di->get("cache")->setPath(ANAX_INSTALL_PATH . "/test/cache");
+
         // Setup controllerclass
         $this->controller = new MockApi();
         $this->controller->setDI($this->di);

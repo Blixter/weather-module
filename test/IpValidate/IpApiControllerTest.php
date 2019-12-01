@@ -16,14 +16,15 @@ class IpApiControllerTest extends TestCase
     public function testIndexActionGet()
     {
         global $di;
-        $this->di = new DIFactoryConfig();
-        $di = $this->di;
 
         // Setup di
-        $di = new DIFactoryConfig();
-        $di->loadServices(ANAX_INSTALL_PATH . "/config/di");
-        $di->loadServices(ANAX_INSTALL_PATH . "/test/config/di");
+        $this->di = new DIFactoryConfig();
+        $this->di->loadServices(ANAX_INSTALL_PATH . "/config/di");
+        $this->di->loadServices(ANAX_INSTALL_PATH . "/test/config/di");
+        $di = $this->di;
 
+        // Use a different cache dir for unit test
+        $this->di->get("cache")->setPath(ANAX_INSTALL_PATH . "/test/cache");
         // Use a different cache dir for unit test
         // $di->get("cache")->setPath(ANAX_INSTALL_PATH . "/test/cache");
         $request = $di->get("request");
