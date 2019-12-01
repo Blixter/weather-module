@@ -27,7 +27,7 @@ bash vendor/blixter/weather-module/.anax/scaffold/postprocess.d/400_weather.bash
 
 Run this script after `composer require` is done or use the commands below for step by step installation.
 
-**Important:** Change the keys in Config/keys.php to valid API keys.
+**Important:** Manually create a new file `config/keys.php` and add valid API keys. See `config/keys_sample`.
 
 ### Configuration and Service setup
 
