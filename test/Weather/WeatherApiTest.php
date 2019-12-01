@@ -41,7 +41,7 @@ class WeatherApiTest extends TestCase
         $url = $this->di->get("url");
         $request->setGet("location", "8.8.8.8");
 
-        $this->weather->setUrl("http://localhost/WeatherModule/a/htdocs/mock?");
+        $this->weather->setUrl("http://www.student.bth.se/~rony18/dbwebb-kurser/ramverk1/me/redovisa/htdocs/mock?");
 
         $res = $this->controller->indexActionGet();
         $this->assertIsArray($res);
@@ -56,7 +56,7 @@ class WeatherApiTest extends TestCase
     {
         $request = $this->di->get("request");
 
-        $this->weather->setUrl("http://localhost/WeatherModule/a/htdocs/mock/past?");
+        $this->weather->setUrl("http://www.student.bth.se/~rony18/dbwebb-kurser/ramverk1/me/redovisa/htdocs/mock/past?");
 
         $request->setGet("location", "8.8.8.8");
         $request->setGet("period", "past");

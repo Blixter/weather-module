@@ -28,7 +28,7 @@ class IpApiGeoControllerTest extends TestCase
 
         // Get the model from di and set the url for the mock api.
         $ipgeo = $di->get("ipgeo");
-        $ipgeo->setUrl("http://localhost/WeatherModule/a/htdocs/mock/ip?");
+        $ipgeo->setUrl("http://www.student.bth.se/~rony18/dbwebb-kurser/ramverk1/me/redovisa/htdocs/mock/ip?");
 
         // Setup the controller
         $this->controller = new IpApiGeoController();

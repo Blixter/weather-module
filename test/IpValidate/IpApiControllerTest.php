@@ -25,8 +25,6 @@ class IpApiControllerTest extends TestCase
 
         // Use a different cache dir for unit test
         $this->di->get("cache")->setPath(ANAX_INSTALL_PATH . "/test/cache");
-        // Use a different cache dir for unit test
-        // $di->get("cache")->setPath(ANAX_INSTALL_PATH . "/test/cache");
         $request = $di->get("request");
 
         // Setup the controller

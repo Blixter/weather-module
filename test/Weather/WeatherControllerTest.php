@@ -41,7 +41,7 @@ class WeatherControllerTest extends TestCase
 
         $request->setGet("title", "Väder");
 
-        $this->weather->setUrl("http://localhost/WeatherModule/a/htdocs/mock");
+        $this->weather->setUrl("http://www.student.bth.se/~rony18/dbwebb-kurser/ramverk1/me/redovisa/htdocs/mock?");
 
         $res = $this->controller->indexActionGet();
 
@@ -62,7 +62,7 @@ class WeatherControllerTest extends TestCase
         // Valid IPv6
         $request->setPost("location", "2001:4860:4860::8888");
 
-        $this->weather->setUrl("http://localhost/WeatherModule/a/htdocs/mock");
+        $this->weather->setUrl("http://www.student.bth.se/~rony18/dbwebb-kurser/ramverk1/me/redovisa/htdocs/mock?");
 
         $res = $this->controller->indexActionPost();
 
@@ -86,7 +86,7 @@ class WeatherControllerTest extends TestCase
         // Upcoming weather prognos
         $request->setPost("radiochoice", "upcoming");
 
-        $this->weather->setUrl("http://localhost/WeatherModule/a/htdocs/mock?");
+        $this->weather->setUrl("http://www.student.bth.se/~rony18/dbwebb-kurser/ramverk1/me/redovisa/htdocs/mock?");
 
         $res = $this->controller->indexActionPost();
 
@@ -110,7 +110,7 @@ class WeatherControllerTest extends TestCase
         // Weather prognos for past month
         $request->setPost("radiochoice", "past");
 
-        $this->weather->setUrl("http://localhost/WeatherModule/a/htdocs/mock?");
+        $this->weather->setUrl("http://www.student.bth.se/~rony18/dbwebb-kurser/ramverk1/me/redovisa/htdocs/mock?");
 
         $res = $this->controller->indexActionPost();
 
@@ -133,7 +133,7 @@ class WeatherControllerTest extends TestCase
 
         $res = $this->controller->indexActionPost();
 
-        $this->weather->setUrl("http://localhost/WeatherModule/a/htdocs/mock?");
+        $this->weather->setUrl("http://www.student.bth.se/~rony18/dbwebb-kurser/ramverk1/me/redovisa/htdocs/mock?");
 
         $this->assertIsObject($res);
         $this->assertInstanceOf("\Anax\Response\Response", $res);
