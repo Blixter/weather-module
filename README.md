@@ -19,7 +19,7 @@ composer require blixter/weather-module
 
 ### Install using scaffold postprocessing file
 
-The module supports a postprocessing installation script, to be used with Anax scaffolding. The script executes the default installation, as outlined above.
+The module supports a postprocessing installation script, to be used with Anax scaffolding. The script executes the default installation.
 
 ```
 bash vendor/blixter/weather-module/.anax/scaffold/postprocess.d/400_weather.bash
@@ -27,7 +27,7 @@ bash vendor/blixter/weather-module/.anax/scaffold/postprocess.d/400_weather.bash
 
 Run this script after `composer require` is done or use the commands below for step by step installation.
 
-**Important:** Manually create a new file `config/keys.php` and add valid API keys. See `config/keys_sample`.
+**Important:** Manually create a new file `config/keys.php` and add valid API keys. See `config/keys_sample.php`.
 
 ### Configuration and Service setup
 
