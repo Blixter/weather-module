@@ -1,3 +1,8 @@
+## v1.0.4 (2019-12-02)
+
+-   Updated README.me
+-   Updated Composer.json
+
 ## v1.0.3 (2019-12-01)
 
 -   Fixed validation errors.
