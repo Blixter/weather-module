@@ -14,7 +14,7 @@ This is how you install the module into an existing [Anax](https://packagist.org
 ### Install using composer
 
 ```
-composer require blixter/weather-module
+composer require blixter/weather
 ```
 
 ### Install using scaffold postprocessing file
