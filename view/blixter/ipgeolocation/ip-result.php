@@ -7,7 +7,6 @@ if (file_exists(ANAX_INSTALL_PATH . "/config/keys.php")) {
     // Lägg till test apikey
     $keys = require ANAX_INSTALL_PATH . "/config/keys_sample.php";
 }
-echo ($keys["mapBoxApiKey"]);
 $apiKey = $keys["mapBoxApiKey"];
 $longitude = $apiRes["longitude"] ?? null;
 $latitude = $apiRes["latitude"] ?? null;
