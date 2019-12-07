@@ -1,3 +1,7 @@
+## v1.0.6 (2019-12-07)
+
+-   Removed an echo used for debugging.
+
 ## v1.0.5 (2019-12-07)
 
 -   Added new config files for testing.
