@@ -1,3 +1,9 @@
+## v1.0.5 (2019-12-07)
+
+-   Added new config files for testing.
+-   Updated view files to use sample apikeys for testing.
+-   Updated model and controllers to work when coordinate-variables are not set - for testing.
+
 ## v1.0.4 (2019-12-02)
 
 -   Updated README.me
