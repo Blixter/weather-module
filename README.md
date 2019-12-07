@@ -1,3 +1,13 @@
+[![Build Status](https://travis-ci.org/Blixter/weather-module.svg?branch=master)](https://travis-ci.org/Blixter/weather-module)
+
+[![CircleCI](https://circleci.com/gh/Blixter/weather-module.svg?style=svg)](https://circleci.com/gh/Blixter/weather-module)
+
+[![Build Status](https://scrutinizer-ci.com/g/Blixter/weather-module/badges/build.png?b=master)](https://scrutinizer-ci.com/g/Blixter/weather-module/build-status/master)
+[![Code Coverage](https://scrutinizer-ci.com/g/Blixter/weather-module/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/Blixter/weather-module/?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Blixter/weather-module/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Blixter/weather-module/?branch=master)
+
+[![Maintainability](https://api.codeclimate.com/v1/badges/0347777861729f78fa96/maintainability)](https://codeclimate.com/github/Blixter/weather-module/maintainability)
+
 # Anax Weather Module
 
 This module works together with an Anax installation.
