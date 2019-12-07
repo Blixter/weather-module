@@ -3,6 +3,7 @@
 -   Added new config files for testing.
 -   Updated view files to use sample apikeys for testing.
 -   Updated model and controllers to work when coordinate-variables are not set - for testing.
+-   Added test for newer PHP versions in travis-config.
 
 ## v1.0.4 (2019-12-02)
 
