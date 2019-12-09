@@ -1,3 +1,7 @@
+## v1.0.7 (2019-12-09)
+
+-   Refactored WeatherMock.php for having too many lines of code.
+
 ## v1.0.6 (2019-12-07)
 
 -   Removed an echo used for debugging.
